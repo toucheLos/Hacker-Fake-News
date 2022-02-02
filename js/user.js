@@ -23,11 +23,15 @@ async function login(evt) {
 
   $loginForm.trigger("reset");
 
+  $loginForm.hide();
+  $signupForm.hide();
+
   saveUserCredentialsInLocalStorage();
   updateUIOnUserLogin();
 }
 
 $loginForm.on("submit", login);
+
 
 /** Handle signup form submission. */
 
@@ -113,4 +117,12 @@ function updateUIOnUserLogin() {
   $allStoriesList.show();
 
   updateNavOnLogin();
+}
+
+function generateUserProfile() {
+  console.debug("generateUserProfile");
+
+  $("#profile-name").text(currentUser.name);
+  $("#profile-username").text(currentUser.username);
+  $("#profile-account-date").text(currentUser.createdAt.slice(0, 10));
 }

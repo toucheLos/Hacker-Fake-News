@@ -32,20 +32,47 @@ function updateNavOnLogin() {
   $(".main-nav-links").show();
   $navLogin.hide();
   $navLogOut.show();
+  $navLinks.show();
   $navUserProfile.text(`${currentUser.username}`).show();
 }
 
-// function navSubmitClick() {
-//   $submitPage.show();
-//   hide everything else
 
-// }
+function navSubmitStoryClick(evt) {
+  console.debug("navSubmitStoryClick", evt);
+  hidePageComponents();
+  $allStoriesList.show();
+  $submitForm.show();
+}
 
-// function navSubmitPost() {
-//   $submitPage.hide();
-    // add post to storylist
-//   $navSubmit.show();
-// }
+$navSubmitStory.on("click", navSubmitStoryClick);
 
-// $navSubmit.on("click", navSubmitClick);
-// $submitNewPost.on("click", navSubmitPost);
+
+
+
+function navFavoritesClick(evt) {
+  console.debug("navFavoritesClick", evt);
+  hidePageComponents();
+  putFavoritesListOnPage();
+}
+
+$body.on("click", "#nav-favorites", navFavoritesClick);
+
+
+
+function navMyStories(evt) {
+  console.debug("navMyStories", evt);
+  hidePageComponents();
+  putUserStoriesOnPage();
+  $ownStories.show();
+}
+
+$body.on("click", "#nav-my-stories", navMyStories);
+
+
+function navProfileClick(evt) {
+  console.debug("navProfileClick", evt);
+  hidePageComponents();
+  $userProfile.show();
+}
+
+$navUserProfile.on("click", navProfileClick);
